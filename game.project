@@ -17,3 +17,6 @@ title = dicebag
 [library]
 include_dirs = dicebag
 
+[input]
+game_binding = /builtins/input/all.input_bindingc
+
