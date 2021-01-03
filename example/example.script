@@ -1,0 +1,46 @@
+local dicebag = require "dicebag.dicebag"
+
+function init(self)
+
+	print("Setting up RNG and clearing bad rolls.")
+	dicebag.set_up_rng()
+
+	print("Tossing a coin, result is:")
+	print(dicebag.flip_coin())
+
+	print("Rolling dice (2d6+3):")
+	print(dicebag.roll_dice(2,6,3))
+
+	print("Rolling three d20s with advantage - the sum of the two highest values:")
+	print(dicebag.roll_special_dice(20,true,3,2))
+
+	print("Rolling two d20s with advantage - the lowest value:")
+	print(dicebag.roll_special_dice(20,false,2))
+
+	print("Rolling a custom die, 100 sides have value 1, 50 sides have value 2")
+	print(dicebag.roll_custom_dice({{100,1}, {50,2}}))
+
+	print("Creating a bag of marbles named 'bonk', with 1 success and 3 fails. The bag will reset on success.")
+	dicebag.bag_create("bonk", 1, 3, true)
+
+	print("Drawing four marbles from the bag:")
+	print(dicebag.bag_draw("bonk"))
+	print(dicebag.bag_draw("bonk"))
+	print(dicebag.bag_draw("bonk"))
+	print(dicebag.bag_draw("bonk"))
+
+	print("Resetting the marble bag to make sure it's back to its original configuration.")
+	dicebag.bag_reset("bonk")
+
+	print("Creating a rollable table named 'wardrobe', which will return items of clothing at various probabilities. It will reset when all clothing items have been generated, or when Suit is returned.")
+	dicebag.table_create("wardrobe", {{90, "Shirt", false}, {9, "Suit", true}, {1, "Tux", false}})
+
+	print("Rolling from table 'wardrobe':")
+	print(dicebag.table_roll("wardrobe"))
+	print(dicebag.table_roll("wardrobe"))
+	print(dicebag.table_roll("wardrobe"))
+
+	print("Resetting rollable table 'wardrobe' to make sure it's back to its original configuration.")
+	dicebag.table_reset("wardrobe")
+
+end
