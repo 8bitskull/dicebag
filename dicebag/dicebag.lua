@@ -115,7 +115,7 @@ function M.roll_custom_dice(sides)
     return 0
 end
 
----Create a bag of red (fail) and green (success) "marbles" that you can draw from. If reset_on_success is true, the bag will be reset after the first green (success) marble is drawn, otherwise the bag will reset when all marbles have been drawn.
+---Create a bag of green (success) and red (fail) "marbles" that you can draw from. If reset_on_success is true, the bag will be reset after the first green (success) marble is drawn, otherwise the bag will reset when all marbles have been drawn.
 function M.bag_create(id, num_success, num_fail, reset_on_success)
 
     M.bags[id] = {success = num_success, fail = num_fail, full_success = num_success, full_fail = num_fail, reset_on_success = reset_on_success}
@@ -245,27 +245,5 @@ function M.table_reset(id)
 
     M.tables[id].active = deep_copy(M.tables[id].original)
 end
-
-
-
--- local result = {0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-
--- for i=1,1000 do
---     local die = M.roll_dice(2,6,2)
---     result[die] = result[die] + 1
--- end
-
--- local sum = 0
--- for i=1,14 do
---     sum = sum + result[i]
--- end
-
--- local smooth_result = {}
--- for i=1,14 do
---     smooth_result[i] = result[i]/sum * 100
--- end
-
--- pprint(result)
--- pprint(smooth_result)
 
 return M
