@@ -107,7 +107,7 @@ Table `rollable_table` has the format: {{weight1, value1, [reset_on_roll1]}, {we
 * `reset_on_roll` (boolean) - Whether or not the table should be reset when this value is drawn. If all of these are false, the table will reset when all values have been drawn.
 
 ### dicebag.table_roll(id)
-Draw a random value from the rollable table created in dicebag.table_create. The value will be removed from the table. If `reset_on_success` is true, the table will reset. Otherwise, the table will reset when all values are drawn.
+Draw a random value from the rollable table created in dicebag.table_create. The value will be removed from the table. If `reset_on_roll` is true, the table will reset. Otherwise, the table will reset when all values are drawn.
 
 **PARAMETERS**
 * `id` (string, number, hash) - A unique identifier for the rollable table.
@@ -116,7 +116,7 @@ Draw a random value from the rollable table created in dicebag.table_create. The
 * `value` (any) - The value specified in dicebag.table_create.
 
 ### dicebag.table_reset(id)
-Manually reset a rollable table. Will also be called when the rollable table is empty, or a drawn value where `reset_on_success` is true.
+Manually reset a rollable table. Will also be called when the rollable table is empty, or a drawn value where `reset_on_roll` is true.
 
 **PARAMETERS**
 * `id` (string, number, hash) - A unique identifier for the rollable table.
