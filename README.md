@@ -23,8 +23,14 @@ print(dicebag.flip_coin())
 
 
 # Usage
-### dicebag.set_up_rng()
+### dicebag.set_up_rng(seed)
 Sets up the randomseed and clears the first number of random rolls.
+
+**PARAMETERS**
+* `seed` (number) - optional seed, if not specified a seed will be generated using socket.gettime().
+
+**RETURNS**
+* `seed` (number) - the number used to seed the random function.
 
 ### dicebag.flip_coin()
 Flip a coin.

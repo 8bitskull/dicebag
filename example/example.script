@@ -3,7 +3,7 @@ local dicebag = require "dicebag.dicebag"
 function init(self)
 
 	print("Setting up RNG and clearing bad rolls.")
-	dicebag.set_up_rng()
+	print(dicebag.set_up_rng())
 
 	print("Tossing a coin, result is:")
 	print(dicebag.flip_coin())
