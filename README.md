@@ -61,14 +61,15 @@ Roll a number of dice and choose one (or more) of the highest (advantage) or low
 **RETURNS**
 * `result` (number) - Sum of the highest (advantage) or lowest (disadvantage) dice rolls.
 
-### dicebag.roll_custom_dice(sides)
-Roll a custom die. This die can have sides with different weights and different values.
+### dicebag.roll_custom_dice(num_dice, sides)
+Roll custom dice. The dice can have sides with different weights and different values.
 
 **PARAMETERS**
+* `num_dice` (number) - How many dice to roll.
 * `sides` (table) - A table describing the sides of the die in the format `{{weight1, value1}, {weight2, value2} ...}`. Note that the value can be any variable type, not just numbers.
 
 **RETURNS**
-* `value` (any) - The value as specified in table `sides`.
+* `value` (any) - The sum of the values as specified in table `sides`.
 
 ### dicebag.bag_create(id, num_success, num_fail, reset_on_success)
 Create a marble bag of green (success) and red (fails) 'marbles'. This allows you to, for example, make an unlikely event more and more likely the more fails are accumulated.
