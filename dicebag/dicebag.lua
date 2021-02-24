@@ -98,20 +98,22 @@ function M.roll_custom_dice(num_dice, sides)
     num_dice = num_dice or 1
 
     local result = 0
+    local total_weight = 0
+    local num_sides = #sides
 
-    for i=1,num_dice do
-        local total_weight = 0
-        local num_sides = #sides
+    --count up the total weight
+    for i=1,num_sides do
+        total_weight = total_weight + sides[i][1]
+    end
 
-        --count up the total weight
-        for i=1,num_sides do
-            total_weight = total_weight + sides[i][1]
-        end
+    local weight_result = 0
+    local processed_weight = 0
 
-        local weight_result = math.random() * total_weight
+    for d=1,num_dice do
+        weight_result = math.random() * total_weight
 
         --find and return the resulting value
-        local processed_weight = 0
+        processed_weight = 0
         for i=1,num_sides do
             if weight_result <= sides[i][1] + processed_weight then
                 result = result + sides[i][2]
