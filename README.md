@@ -66,7 +66,7 @@ Roll custom dice. The dice can have sides with different weights and different v
 
 **PARAMETERS**
 * `num_dice` (number) - How many dice to roll.
-* `sides` (table) - A table describing the sides of the die in the format `{{weight1, value1}, {weight2, value2} ...}`. Note that the value can be any variable type, not just numbers.
+* `sides` (table) - A table describing the sides of the die in the format `{{weight1, value1}, {weight2, value2} ...}`. Note that the values must be numbers.
 
 **RETURNS**
 * `value` (any) - The sum of the values as specified in table `sides`.
