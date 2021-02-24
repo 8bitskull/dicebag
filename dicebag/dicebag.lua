@@ -92,9 +92,12 @@ function M.roll_special_dice(num_sides, advantage, num_dice, num_results)
     return result
 end
 
----Roll a custom die. Parameter sides is a table in the format {{weight1, value1}, {weight2, value2} ...}. Returns the value of the rolled side.
-function M.roll_custom_dice(sides)
+---Roll one or more custom dice. Parameter sides is a table in the format {{weight1, value1}, {weight2, value2} ...}. Returns the total value of rolled custom dice.
+function M.roll_custom_dice(num_dice, sides)
 
+    num_dice = num_dice or 1
+
+    local result = 0
     local total_weight = 0
     local num_sides = #sides
 
@@ -103,19 +106,25 @@ function M.roll_custom_dice(sides)
         total_weight = total_weight + sides[i][1]
     end
 
-    local weight_result = math.random() * total_weight
-
-    --find and return the resulting value
+    local weight_result = 0
     local processed_weight = 0
-    for i=1,num_sides do
-        if weight_result <= sides[i][1] + processed_weight then
-            return sides[i][2]
-        else
-            processed_weight = processed_weight + sides[i][1]
+
+    for d=1,num_dice do
+        weight_result = math.random() * total_weight
+
+        --find and return the resulting value
+        processed_weight = 0
+        for i=1,num_sides do
+            if weight_result <= sides[i][1] + processed_weight then
+                result = result + sides[i][2]
+                break
+            else
+                processed_weight = processed_weight + sides[i][1]
+            end
         end
     end
 
-    return 0
+    return result
 end
 
 ---Create a bag of green (success) and red (fail) "marbles" that you can draw from. If reset_on_success is true, the bag will be reset after the first green (success) marble is drawn, otherwise the bag will reset when all marbles have been drawn.
